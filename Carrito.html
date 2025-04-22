@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de compras</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Styles/styles.css">
+    <link rel="stylesheet" href="Styles/Fstyles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Fotos/FotoVideo.png" alt="Logo" width="120" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Index.html">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Servicios.html">SERVICIOS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Blog.html">BLOG</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Galeria.html">GALERIA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Agenda.html">AGENDA</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-contacto dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            CONTÁCTANOS
+                        </a>                        
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="https://www.whatsapp.com/?lang=es_LA">WhatsApp</a></li>
+                            <li><a class="dropdown-item" href="https://www.messenger.com/?locale=es_ES">Messenger</a></li>
+                            <li><a class="dropdown-item" href="https://www.instagram.com/">Instagram</a></li>
+                            <li><a class="dropdown-item" href="https://www.facebook.com/?locale=es_LA">Facebook</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="Carrito.html"><img src="Fotos/Carrito.png" alt="Carrito" width="40" height="40"></a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="background-color: whitesmoke; opacity: 90%; padding: 10px;">
+        <div id="contenedor-carrito" class="container container-carrito"></div>
+        <div class="text-center mt-3">
+            <button class="btn btn-warning me-2" onclick="vaciarCarrito()">Vaciar Carrito</button>
+            <button class="btn btn-success" onclick="pagarTodo()">Pagar Todo</button>
+        </div>
+    </div>
+    <script>
+        function cargarCarrito() {
+            const contenedor = document.getElementById('contenedor-carrito');
+            contenedor.innerHTML = ''; // Limpia el contenedor
+
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+            if (carrito.length === 0) {
+                contenedor.innerHTML = `<h3 class="text-center">Tu carrito está vacío</h3>`;
+                return;
+            }
+
+            carrito.forEach((paquete, index) => {
+                contenedor.innerHTML += `
+                <div class="paquete mb-4">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div class="paquete-titulo">${paquete.nombre}</div>
+                            <div class="detalles">${paquete.detalles.replace(/\n/g, "<br>")}</div>
+                        </div>
+                        <div class="col-md-4 precio">
+                            <div>
+                                ${paquete.nombre} &nbsp;&nbsp;&nbsp; $${paquete.precio}<br>
+                                Tiempo extra &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $0<br>
+                                Fotos adicionales &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; $0<br>
+                                Videos adicionales &nbsp;&nbsp;&nbsp; $0
+                            </div>
+                            <div class="mt-2">
+                                <button class="btn btn-danger btn-sm ms-2" onclick="eliminarPaquete(${index})">Eliminar</button>
+                                <div class="precio-final mt-1">Total: $${paquete.precio}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>`;
+            });
+        }
+        function eliminarPaquete(index) {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            carrito.splice(index, 1);
+            localStorage.setItem('carrito', JSON.stringify(carrito));
+            cargarCarrito();
+        }
+        function vaciarCarrito() {
+            if (confirm("¿Estás seguro que quieres vaciar el carrito?")) {
+                localStorage.removeItem('carrito');
+                cargarCarrito();
+            }
+        }
+        function pagarTodo() {
+            let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+            if (carrito.length === 0) {
+                alert("Tu carrito está vacío.");
+                return;
+            }
+            // Redirigir a InfoAdicional2.html
+            window.location.href = 'InfoAdicional2.html';
+        }
+        // Cargar al inicio
+        window.onload = cargarCarrito;
+    </script>
+</body>
+</html>

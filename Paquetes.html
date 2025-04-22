@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paquetes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="Styles/styles.css"> <!-- Enlace al archivo CSS personalizado -->
+    <link rel="stylesheet" href="Styles/Fstyles.css"> <!-- Enlace al archivo CSS personalizado -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Fotos/FotoVideo.png" alt="Logo" width="120" height="70" class="top-left-logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Index.html">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Servicios.html">SERVICIOS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Blog.html">BLOG</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Galeria.html">GALERIA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Agenda.html">AGENDA</a></li>
+                    <!-- Botón de menú desplegable -->
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-contacto dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            CONTÁCTANOS
+                        </a>                        
+                        <ul class="dropdown-menu dropdown-menu-end"> <!-- Se alinea a la derecha -->
+                            <li><a class="dropdown-item" href="https://www.whatsapp.com/?lang=es_LA">WhatsApp</a></li>
+                            <li><a class="dropdown-item" href="https://www.messenger.com/?locale=es_ES">Messenger</a></li>
+                            <li><a class="dropdown-item" href="https://www.instagram.com/">Instagram</a></li>
+                            <li><a class="dropdown-item" href="https://www.facebook.com/?locale=es_LA">Facebook</a></li>
+                        </ul>
+                    </li>
+                    <a href="Carrito.html"><img src="Fotos/Carrito.png" alt="Carrito" width="40" height="40"></a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <h2 style="padding: 5px;">Paquetes de Foto</h2>
+    <!-- DIAMANTE 1 -->
+    <div class="row">
+        <div class="card flex-fill" style="width: 18rem; margin: 8px;">
+            <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
+                <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+                    <h5 class="card-title" style="text-align: center;">Diamante 1</h5>
+                    <p class="card-text">
+                        <ul id="detallDiam1" style="margin: 10px;">
+                            <li>1 álbum de 10 panorámicas 20x10, 20 lados con diseño personalizado.</li>
+                            <li>100 fotografías 4x6 con álbum incluido.</li>
+                            <li>20 fotografías 5x7</li>
+                            <li>3 fotografías 11x14</li>
+                            <li>1 fotografía 16x20 con cuadro incluido</li>
+                            <li>Tiempo de sesion: 1 hora</li>
+                            <li>$ 1000 dlls</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Diamante 1', detalleDeDiam1, '1000', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        <!-- Nuevo botón para añadir al carrito -->
+                        <button class="btn btn-success" onclick="agregarAlCarrito('Diamante 1', detalleDeDiam1, '1000', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- DIAMANTE 2 -->
+        <div class="card flex-fill" style="width: 18rem; margin: 8px;">
+            <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
+                <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+                    <h5 class="card-title" style="text-align: center;">Diamante 2 (Panorámico)</h5>
+                    <p class="card-text">
+                        <ul id="detallDiam2" style="margin: 10px;">
+                            <li>120 fotografías tamaño 4x6 con albúm</li>
+                            <li>20 fotografías 5x7 con 1 mini álbum</li>
+                            <li>1 albúm de 15 páginas panorámico tamaño 11x14 con diseño personalizado</li>
+                            <li>4 fotografías tamaño 11x14</li>
+                            <li>1 fotografía tamaño 20x24 montada en base rígida con cuadro</li>
+                            <li>150 archivos digitales de uso libre en usb</li>
+                            <li>Tiempo de sesion: 2 horas</li>
+                            <li>$ 1500 dlls</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Diamante 2', detalleDeDiam2, '1500', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        <!-- Nuevo botón para añadir al carrito -->
+                        <button class="btn btn-success" onclick="agregarAlCarrito('Diamante 2', detalleDeDiam2, '1500', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- DIAMANTE 3 -->
+        <div class="card flex-fill" style="width: 18rem; margin: 8px;">
+            <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
+                <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+                    <h5 class="card-title" style="text-align: center;">Diamante 3 (Plus)</h5>
+                    <p class="card-text">
+                        <ul id="detallDiam3" style="margin: 10px;">
+                            <li>120 fotografías tamaño 5x7 con caja de madera artesanal personalizada</li>
+                            <li>1 albúm de 15 páginas panorámico tamaño 12x16 con diseño personalizado y portada de acrílico</li>
+                            <li>5 fotografías tamaño 11x14</li>
+                            <li>1 fotografía tamaño 16x20 con cuadro incluido (a elegir)</li>
+                            <li>Sesión previa al evento</li>
+                            <li>1 fotografía tamaño 20x24 impresa en formato canvas</li>
+                            <li>250 archivos digitales de uso libre en usb</li>
+                            <li>Tiempo de sesion: 3 horas</li>
+                            <li>$ 2100 dlls</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Diamante 3 Plus', detalleDeDiam3, '2100', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        <!-- Nuevo botón para añadir al carrito -->
+                        <button class="btn btn-success" onclick="agregarAlCarrito('Diamante 3 Plus', detalleDeDiam3, '2100', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!-- PAQUETE ENSUEÑO -->
+        <div class="card flex-fill" style="width: 18rem; margin: 8px;">
+            <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
+                <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+                    <h5 class="card-title" style="text-align: center;">Paquete ensueño</h5>
+                    <p class="card-text">
+                        <ul id="detallEnsue" style="margin: 10px;">
+                            <li>01 álbum de 15 páginas panorámicas tamaño 12x36" con diseño personalizado y portada de acrílico</li>
+                            <li>120 fotografías tamaño 5x7" con álbum con caja de madera artesanal personalizada</li>
+                            <li>01 mini álbum incrustado</li>
+                            <li>01 fotografía tamaño 20x24" con cuadro incluido o canvas</li>
+                            <li>Sesión previa al evento</li>
+                            <li>01 fotografía tamaño 20x24 impresa en formato canvas</li>
+                            <li>Video shortfilm 15-20 minutos</li>
+                            <li>Todos los archivos digitales uso libre en USB</li>
+                            <li>Tiempo de sesion: 3 horas</li>
+                            <li>$ 3500 dlls</li>
+                        </ul>
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Paquete ensueño', detalleDeEnsue, '3500', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        <!-- Nuevo botón para añadir al carrito -->
+                        <button class="btn btn-success" onclick="agregarAlCarrito('Paquete ensueño', detalleDeEnsue, '3500', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PAQUETE DE VIDEOS -->
+    <h2 style="padding: 5px;">Paquetes de Video</h2>
+    <!-- VIDEO CINEMATOGRAFICO -->
+    <div class="row">
+        <div class="card flex-fill" style="width: 18rem; margin: 8px;">
+                <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
+                    <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+                        <h5 class="card-title" style="text-align: center;">Video Cinematográfico</h5>
+                        <p class="card-text">
+                            <ul id="detallCinem" style="margin: 10px;">
+                                <li>Un USB que contienen el video original en calidad HD</li>
+                                <li>2 estilos de ediciones: Short film 15-20 min y escenas extras del evento long film 1:30 hrs</li>
+                                <li>Servicio de cámaras HD de alta gama</li>
+                                <li>Mayor detalle y cantidad de escenas grabadas por dos videografos en estilo cinematográfico</li>
+                                <li>Herramientas cinematográficas: riel estabilizador, variedad de lentes y micrófono inalámbrico</li>
+                                <li>Tiempo de sesion: 1 hora 30 minutos</li>
+                                <li>$1800 dlls</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="seleccionarPaquete('Video Cinematográfico', detalleDeCinem,'1800', 'Paquete: Video')">COMPRAR AHORA</button>
+                            <!-- Nuevo botón para añadir al carrito -->
+                            <button class="btn btn-success" onclick="agregarAlCarrito('Video Cinematográfico', detalleDeCinem, '1800', 'Paquete: Video')">AÑADIR AL CARRITO</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- PRODUCCION ESTRELLA -->
+            <div class="card flex-fill" style="width: 18rem; margin: 8px;">
+                <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
+                    <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+                        <h5 class="card-title" style="text-align: center;">Producción Estrella</h5>
+                        <p class="card-text">
+                            <ul id="detallEstre" style="margin: 10px;">
+                                <li>1 USB que contiene el video original en calidad HD.</li>
+                                <li>2 estilos de ediciones: Short Film 15-20 min y escenas extras del evento Long Film 1:30 hrs.</li>
+                                <li>Video trailer 1-2 minutos</li>
+                                <li>Servicio de cámaras HD de alta gama.</li>
+                                <li>Mayor detalle y cantidad de escenas grabadas por dos videógrafos en estilo cinematográfico.</li>
+                                <li>Herramientas cinematográficas: riel estabilizador, variedad de lentes y micrófono inalámbrico.</li>
+                                <li>Drone</li>
+                                <li>Producción de foto animada</li>
+                                <li>Álbum estrella (digital)</li>
+                                <li>Tiempo de sesion: 3 horas</li>
+                                <li>$3400 dlls</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="seleccionarPaquete('Producción Estrella', detalleDeEstre, '3400', 'Paquete: Video')">COMPRAR AHORA</button>
+                            <!-- Nuevo botón para añadir al carrito -->
+                            <button class="btn btn-success" onclick="agregarAlCarrito('Producción Estrella', detalleDeEstre, '3400', 'Paquete: Video')">AÑADIR AL CARRITO</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- VIDEOS CONCEPTUALES -->
+            <div class="card flex-fill" style="width: 18rem; margin: 8px;">
+                <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
+                    <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+                        <h5 class="card-title" style="text-align: center; ">Videos Conceptuales</h5>
+                        <p class="card-text">
+                            <ul id="detallConce" style="margin: 10px;">
+                                <li>Video short film 15-20 minutos</li>
+                                <li>Video tradicional 60 minutos</li>
+                                <li>Video teaser highligth de 3-5 minutos</li>
+                                <li>Video trailer 1-2 minutos para compartir en social media</li>
+                                <li>Tiempo de sesion: 4 horas</li>
+                                <li>$400 dlls</li>
+                            </ul>
+                            <button class="btn btn-primary" onclick="seleccionarPaquete('Videos Conceptuales', detalleDeConce, '400', 'Paquete: Video')">COMPRAR AHORA</button>
+                            <!-- Nuevo botón para añadir al carrito -->
+                            <button class="btn btn-success" onclick="agregarAlCarrito('Videos Conceptuales', detalleDeConce, '400', 'Paquete: Video')">AÑADIR AL CARRITO</button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="JS/PaqAdi.js"> </script>
+</body>
+</html>

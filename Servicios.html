@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="Styles/styles.css"> <!-- Enlace al archivo CSS personalizado -->
+    <link rel="stylesheet" href="Styles/Fstyles.css"> <!-- Enlace al archivo CSS personalizado -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="Fotos/FotoVideo.png" alt="Logo" width="120" height="70">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="Index.html">INICIO</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Servicios.html">SERVICIOS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Blog.html">BLOG</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Galeria.html">GALERIA</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Agenda.html">AGENDA</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="btn btn-contacto dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            CONTÁCTANOS
+                        </a>                        
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="https://www.whatsapp.com/?lang=es_LA">WhatsApp</a></li>
+                            <li><a class="dropdown-item" href="https://www.messenger.com/?locale=es_ES">Messenger</a></li>
+                            <li><a class="dropdown-item" href="https://www.instagram.com/">Instagram</a></li>
+                            <li><a class="dropdown-item" href="https://www.facebook.com/?locale=es_LA">Facebook</a></li>
+                        </ul>
+                    </li>
+                    <a href="Carrito.html"><img src="Fotos/Carrito.png" alt="Carrito" width="40" height="40"></a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Sección de servicios -->
+    <div class="container mt-5 text-center">
+        <h2 class="fw-bold">Descubre qué servicios ofrecemos y sus</h2>
+        <a href="Paquetes.html" class="btn btn-warning text-dark fw-bold mb-4">Paquetes</a>
+
+        <div class="row justify-content-center gap-3">
+            <!-- Fotógrafo de Bodas -->
+            <div class="col-md-4 d-flex flex-column align-items-center">
+                <img src="Fotos/boda.jpeg" class="img-fluid rounded" alt="Fotógrafo de Bodas">
+                <h5 class="mt-3">Fotógrafo de Bodas</h5>
+                <a href="Paquetes.html" class="btn btn-warning">Más Información</a>
+            </div>
+
+            <!-- Fotógrafo de XV años -->
+            <div class="col-md-4 d-flex flex-column align-items-center">
+                <img src="Fotos/xvanos3.png" class="img-fluid rounded" alt="Fotógrafo de XV años">
+                <h5 class="mt-3">Fotógrafo de XV años</h5>
+                <a href="Paquetes.html" class="btn btn-warning">Más Información</a>
+            </div>
+
+            <!-- Sesión Inmobiliaria -->
+            <div class="col-md-4 d-flex flex-column align-items-center">
+                <img src="Fotos/inmobiliar.jpg" class="img-fluid rounded" alt="Sesión Inmobiliaria">
+                <h5 class="mt-3">Sesión Inmobiliaria</h5>
+                <a href="Paquetes.html" class="btn btn-warning">Más Información</a>
+            </div>
+            
+            <!-- Sesión Comercial -->
+            <div class="col-md-4 d-flex flex-column align-items-center">
+                <img src="Fotos/comercial.jpg" class="img-fluid rounded" alt="Sesión Comercial">
+                <h5 class="mt-3">Sesión Comercial</h5>
+                <a href="Paquetes.html" class="btn btn-warning">Más Información</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

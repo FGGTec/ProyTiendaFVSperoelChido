@@ -1,0 +1,46 @@
+/* Estilo para centrar el título */
+.titulo {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 25px;
+}
+
+/* Contenedor para organizar las imágenes */
+.galeria {
+    position: relative;
+    width: 50%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 750px;
+}
+
+/* Estilos para las imágenes */
+.galeria img {
+    position: absolute;
+    width: 400px; /* Ajusta el tamaño según sea necesario */
+    height: auto;
+    border-radius: 50px;
+    box-shadow: 50px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Posicionamiento de las imágenes */
+.img1 { top: 50px; left: 0; }  /* Esquina superior izquierda */
+.img2 { top: 50px; right: 0; } /* Esquina superior derecha */
+.img3 { bottom: 10px; right: 0; } /* Esquina inferior derecha */
+.img4 { bottom: 10px; left: 0; }  /* Esquina inferior izquierda */
+
+/* Sección del video */
+.video-container {
+    text-align: center;
+    margin-top: 10px; /* Se ajusta para que quede debajo de las imágenes */
+}
+
+.video-container img {
+    width: 600px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}

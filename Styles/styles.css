@@ -1,0 +1,283 @@
+/* Estilos generales */
+body {
+    font-family: initial, sans-serif;
+}
+
+/* Estilos de la barra de navegación */
+.navbar-nav .nav-link {
+    font-weight: bold;
+    color: black;
+    padding: 10px;
+}
+/* Barra de navegación */
+.navbar-nav .nav-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 3px; /* Grosor de la línea */
+    background-color: orange; /* Color de la línea */
+}
+.navbar-nav .nav-link:hover {
+    color: orange;
+}
+
+/* Estilos del formulario */
+form .form-control {
+    border-radius: 5px;
+    border: 1px solid #e7e7e7;
+}
+
+form .btn-warning {
+    background-color: #f4a000;
+    border: none;
+}
+
+form .btn-warning:hover {
+    background-color: #e69500;
+}
+.btn-agendar {
+    display: inline-block;
+    background-color: orange;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.btn-contacto {
+    background-color: orange;  /* Color de fondo naranja */
+    color: black;              /* Color de texto negro */
+    border: none;              /* Sin borde */
+    font-weight: bold;         /* Texto en negrita */
+}
+
+.btn-contacto:hover {
+    background-color: #e69500; /* Un tono más oscuro de naranja al pasar el cursor */
+    color: black;              /* Mantener el texto negro */
+}
+@font-face {
+    font-family: 'InriaSans';
+    src: url('../PUnidad2/font/InriaSans-Regular.ttf') format('truetype'),
+         url('../PUnidad2/font/InriaSans-LightItalic.ttf') format('truetype'),
+         url('../PUnidad2/font/InriaSans-Light.ttf') format('truetype'),
+         url('../PUnidad2/font/InriaSans-Italic.ttf') format('truetype'),
+         url('../PUnidad2/font/InriaSans-BoldItalic.ttf') format('truetype'),
+         url('../PUnidad2/font/InriaSans-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+.card-body .card-body{
+    height: 100%;
+}
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+    background-color: whitesmoke;
+    color: #e69500;
+  }
+  h5 {
+    background-color: rgb(255, 255, 255);
+    opacity: 80%;
+    padding: 5px;
+    border-radius: 8px;
+  }
+  /* Styles de la Información del cliente */
+  body {
+    background-color: #f8f9fa;
+}
+.detalle-compra {
+    background-color: #e67e22;
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 10px;
+    height: fit-content;
+}
+.btn-confirmar {
+    background-color: #ffa500;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+/* Styles de paquetes adicionales */
+.adicionales-box {
+    background-color: #F39200;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    text-align: left;
+    width: 100%;
+    max-width: 400px;
+    margin: 30px auto;
+}
+
+.adicionales-box h3 {
+    font-weight: bold;
+    font-size: 28px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.adicional-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.adicional-input {
+    background-color: #fce1b8;
+    border: none;
+    width: 100px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.confirmar-btn {
+    background-color: white;
+    color: #F39200;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    display: block;
+    margin: 20px auto 0;
+    transition: 0.3s;
+}
+
+.confirmar-btn:hover {
+    background-color: #F39200;
+    color: white;
+    border: 1px solid white;
+}
+.paquete-info {
+    background-color: #FFA500; /* Naranja */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    color: white;
+    margin-top: 30px;
+    animation: aparecer 1s ease;
+}
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* Styles del carrito */
+.container-carrito {
+    margin: 50px auto;
+    max-width: 1200px;
+}
+.titulo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+.paquete {
+    border-top: 1px solid black;
+    padding: 20px 0;
+}
+.paquete:last-child {
+    border-bottom: 1px solid black;
+}
+.paquete-titulo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+.extras, .detalles, .precio {
+    margin-top: 10px;
+}
+.extras ul {
+    list-style: none;
+    padding-left: 0;
+}
+.extras ul li::before {
+    content: "· ";
+}
+.precio {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.btn-pagar {
+    background-color: orange;
+    color: white;
+    border: none;
+    padding: 5px 15px;
+    font-weight: bold;
+}
+.precio-final {
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+/* Styles del Ticket */
+.ticket-container {
+    max-width: 400px;
+    margin: 50px auto;
+    border: 2px solid orange;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+.ticket-logo img {
+    display: block;
+    margin: 0 auto 10px auto;
+    width: 80px;
+}
+.ticket-title {
+    text-align: center;
+    font-family: 'Georgia', serif;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+.ticket-content ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+.ticket-content {
+    margin-bottom: 20px;
+}
+.extras-table {
+    width: 100%;
+    margin-bottom: 15px;
+}
+.extras-table th, .extras-table td {
+    padding: 5px;
+    text-align: left;
+}
+.extras-table td:last-child, .extras-table th:last-child {
+    text-align: right;
+}
+.total {
+    font-weight: bold;
+    border-top: 1px solid #000;
+    padding-top: 5px;
+}
+.qr-section {
+    text-align: center;
+    margin-top: 15px;
+}
+.qr-section p {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.navbar {
+    border-bottom: 2px solid orange;
+}
+.navbar-nav .nav-link {
+    margin-right: 10px;
+}
