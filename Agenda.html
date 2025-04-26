@@ -26,7 +26,6 @@
                 <li class="nav-item"><a class="nav-link" href="Blog.html">BLOG</a></li>
                 <li class="nav-item"><a class="nav-link" href="Galeria.html">GALERIA</a></li>
                 <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
-                <li class="nav-item"><a class="nav-link" href="Agenda.html">AGENDA</a></li>
                 <!-- Botón de menú desplegable -->
                 <li class="nav-item dropdown">
                     <a class="btn btn-contacto dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -40,12 +39,13 @@
                     </ul>
                 </li>
                 <a href="Carrito.html"><img src="Fotos/Carrito.png" alt="Carrito" width="40" height="40"></a>
+                <li class="nav-item"><a class="nav-link" href="Agenda.html">Iniciar Sesión</a></li>
             </ul>
         </div>
     </div>
 </nav>
     <!-- Sección de Contacto -->
-    <div class="container mt-5">
+    <!--<div class="container mt-5">
         <div class="row">
             <div class="col-md-6">
                 <h2 class="fw-light fst-italic">Contacto</h2>
@@ -54,8 +54,8 @@
                     Si lo prefiere, no dude en enviar un correo electrónico directamente a 
                     <a href="mailto:Example@Live.com.mx" class="text-decoration-none text-primary">Example@Live.com.mx</a>.
                 </p>
-            </div>
-            <div class="col-md-6">
+            </div>-->
+            <div class="container md-5">
                 <form>
                     <div class="row">
                         <div class="col">
@@ -72,25 +72,17 @@
                         <input type="email" class="form-control">
                     </div>
                     <div class="mt-3">
-                      <div class="card-body">
-                        <label>¿Como se enteró de nosotros?</label>
-                        <select class="form-control">
-                            <option value="social">Por una red social</option>
-                            <option value="folleto">Folletos</option>
-                            <option value="bff">Por amistades</option>
-                            <option value="tv">Televisión</option>
-                        </select>
+                        <label class="form-label">Nombre de usuario</label>
+                        <input type="UserName" class="form-control">
                     </div>
                     <div class="mt-3">
-                        <label class="form-label">Mensaje</label>
-                        <textarea class="form-control" rows="4"></textarea>
+                        <label class="form-label">Contraseña</label>
+                        <input type="password" class="form-control">
                     </div>
-                    <button type="submit" class="btn btn-warning text-white fw-bold mt-3 w-100">ENTREGAR</button>
+                    <button type="submit" class="btn btn-warning text-white fw-bold mt-3 w-100">REGISTRAR</button>
                 </form>
             </div>
         </div>
     </div>
-
-    
 </body>
 </html>
