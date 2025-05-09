@@ -4,7 +4,7 @@ function seleccionarPaquete(nombre, detalles, precio, tipo) {
     localStorage.setItem('paqueteDetalles', detalles);
     localStorage.setItem('paquetePrecio', precio);//Separar el valor del precio en variable int para poder sumarlo y agregar $ dlls fuera de variable como string
     localStorage.setItem('paqueteTipo', tipo);
-    window.location.href = 'infoAdicional.html'; // Redirigir a la página Adicionales
+    window.location.href = 'infoAdicional'; // Redirigir a la página Adicionales
 }
 
 detalleDeDiam1 = document.getElementById('detallDiam1').textContent;

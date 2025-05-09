@@ -53,5 +53,5 @@ function confirmarPaquete() {
   localStorage.setItem('SFotosAdd', document.getElementById("fotosAdicionales").value);
   localStorage.setItem('SVideosAdd', document.getElementById("videosAdicionales").value);
   alert('¡Paquete confirmado!');
-  window.location.href = 'Ticket2.html';
+  window.location.href = 'Ticket2';
 }

@@ -27,7 +27,7 @@
                 <li class="nav-item"><a class="nav-link" href="Galeria.html">GALERIA</a></li>
                 <li class="nav-item"><a class="nav-link" href="Nosotros.html">NOSOTROS</a></li>
                 <!-- Botón de menú desplegable -->
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown mb-2">
                     <a class="btn btn-contacto dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         CONTÁCTANOS
                     </a>                    
@@ -39,8 +39,10 @@
                     </ul>
                 </li>
                 <a href="Carrito.html"><img src="Fotos/Carrito.png" alt="Carrito" width="40" height="40"></a>
-                <li class="nav-item"><a class="nav-link" href="Agenda.html">Iniciar Sesión</a></li>
-            </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#loginModal">Iniciar Sesión</a>
+                  </li>
+                              </ul>
         </div>
     </div>
 </nav>
@@ -84,5 +86,25 @@
             </div>
         </div>
     </div>
+    <!-- Modal de Iniciar Sesión -->
+<div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-4">
+        <h4 class="mb-3">Iniciar Sesión</h4>
+        <form method="POST" action="/login">
+          <div class="form-group mb-3">
+            <label>Usuario</label>
+            <input type="text" class="form-control" name="username" required>
+          </div>
+          <div class="form-group mb-3">
+            <label>Contraseña</label>
+            <input type="password" class="form-control" name="password" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
 </body>
 </html>

@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block titulo %}Registro{% endblock %}
+
+{% block miCSS %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/registro.css') }}">
+{% endblock %}
+
+{% block cuerpo %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card p-4 shadow-lg" style="min-width: 400px;">
+        <h2 class="text-center mb-4">Iniciar sesion</h2>
+        <form method="POST">
+            <div class="row">
+               
+                <label class="form-label">Nombre de usuario</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="mt-3">
+                <label class="form-label">Contraseña</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-warning text-white fw-bold mt-4 w-100">Iniciar sesion</button>
+            <p class="text-center mt-3">
+                ¿No tienes cuenta? <a href="{{ url_for('registro') }}" class="text-decoration-none">Regístrate aquí</a>
+            </p>
+            
+        </form>
+    </div>
+</div>
+{% endblock %}
