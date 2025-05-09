@@ -1,6 +1,13 @@
 /* Estilos generales */
 body {
     font-family: initial, sans-serif;
+    background-image: url('../Fotos/fondo.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 /* Estilos de la barra de navegación */
@@ -181,11 +188,11 @@ form .btn-warning:hover {
     margin: 50px auto;
     max-width: 1200px;
 }
-.titulo {
+/*.titulo {
     font-size: 1.8rem;
     font-weight: bold;
     margin-bottom: 20px;
-}
+}*/
 .paquete {
     border-top: 1px solid black;
     padding: 20px 0;
