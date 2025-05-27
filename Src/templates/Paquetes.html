@@ -58,6 +58,12 @@
         </div>
     </nav>
     <h2 style="padding: 5px;">Paquetes de Foto</h2>
+    
+     Rol actual: {{ RolUsuario }}
+     {% if RolUsuario in ['editor', 'admin'] %}
+        {% endif %}
+        {% if RolUsuario == 'admin' %}
+        {% endif %}
     <!-- DIAMANTE 1 -->
     <div class="row">
         <div class="card flex-fill" style="width: 18rem; margin: 8px;">
@@ -74,9 +80,15 @@
                             <li>Tiempo de sesion: 1 hora</li>
                             <li>$ 1000 dlls</li>
                         </ul>
+                        {% if RolUsuario is none %}
+                        <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR</button>
+                        {% else %}
                         <button class="btn btn-primary" onclick="seleccionarPaquete('Diamante 1', detalleDeDiam1, '1000', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        {% endif %}
                         <!-- Nuevo botón para añadir al carrito -->
-                        <button class="btn btn-success" onclick="agregarAlCarrito('Diamante 1', detalleDeDiam1, '1000', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                        {% if RolUsuario in ['editor', 'admin'] %}<button class="btn btn-secondary">Editar Paquete</button>{% endif %}
+                        {% if RolUsuario == 'admin' %}<button class="btn btn-danger">Eliminar Paquete</button>{% endif %}
+                        {% if RolUsuario != None %}<button class="btn btn-success" onclick="agregarAlCarrito('Diamante 1', detalleDeDiam1, '1000', 'Paquete: Foto')">AÑADIR AL CARRITO</button>{% endif %}
                     </p>
                 </div>
             </div>
@@ -97,9 +109,15 @@
                             <li>Tiempo de sesion: 2 horas</li>
                             <li>$ 1500 dlls</li>
                         </ul>
+                        {% if RolUsuario is none %}
+                        <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR</button>
+                        {% else %}
                         <button class="btn btn-primary" onclick="seleccionarPaquete('Diamante 2', detalleDeDiam2, '1500', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        {% endif %}
                         <!-- Nuevo botón para añadir al carrito -->
-                        <button class="btn btn-success" onclick="agregarAlCarrito('Diamante 2', detalleDeDiam2, '1500', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                          {% if RolUsuario in ['editor', 'admin'] %}<button class="btn btn-secondary">Editar Paquete</button>{% endif %}
+                         {% if RolUsuario == 'admin' %}<button class="btn btn-danger">Eliminar Paquete</button>{% endif %}
+                        {% if RolUsuario != None %}<button class="btn btn-success" onclick="agregarAlCarrito('Diamante 2', detalleDeDiam2, '1500', 'Paquete: Foto')">AÑADIR AL CARRITO</button>{% endif %}
                     </p>
                 </div>
             </div>
@@ -119,11 +137,17 @@
                             <li>1 fotografía tamaño 20x24 impresa en formato canvas</li>
                             <li>250 archivos digitales de uso libre en usb</li>
                             <li>Tiempo de sesion: 3 horas</li>
-                            <li>$ 2100 dlls</li>
+                            <li>$2100 dlls</li>
                         </ul>
+                        {% if RolUsuario is none %}
+                        <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR</button>
+                        {% else %}
                         <button class="btn btn-primary" onclick="seleccionarPaquete('Diamante 3 Plus', detalleDeDiam3, '2100', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        {% endif %}
                         <!-- Nuevo botón para añadir al carrito -->
-                        <button class="btn btn-success" onclick="agregarAlCarrito('Diamante 3 Plus', detalleDeDiam3, '2100', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                          {% if RolUsuario in ['editor', 'admin'] %}<button class="btn btn-secondary">Editar Paquete</button>{% endif %}
+                         {% if RolUsuario == 'admin' %}<button class="btn btn-danger">Eliminar Paquete</button>{% endif %}
+                        {% if RolUsuario != None %}<button class="btn btn-success" onclick="agregarAlCarrito('Diamante 3 Plus', detalleDeDiam3, '2100', 'Paquete: Foto')">AÑADIR AL CARRITO</button>{% endif %}
                     </p>
                 </div>
             </div>
@@ -146,9 +170,15 @@
                             <li>Tiempo de sesion: 3 horas</li>
                             <li>$ 3500 dlls</li>
                         </ul>
+                        {% if RolUsuario is none %}
+                        <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR</button>
+                        {% else %}
                         <button class="btn btn-primary" onclick="seleccionarPaquete('Paquete ensueño', detalleDeEnsue, '3500', 'Paquete: Foto')">COMPRAR AHORA</button>
+                        {% endif %}
                         <!-- Nuevo botón para añadir al carrito -->
-                        <button class="btn btn-success" onclick="agregarAlCarrito('Paquete ensueño', detalleDeEnsue, '3500', 'Paquete: Foto')">AÑADIR AL CARRITO</button>
+                          {% if RolUsuario in ['editor', 'admin'] %}<button class="btn btn-secondary">Editar Paquete</button>{% endif %}
+                         {% if RolUsuario == 'admin' %}<button class="btn btn-danger">Eliminar Paquete</button>{% endif %}
+                        {% if RolUsuario != None %}<button class="btn btn-success" onclick="agregarAlCarrito('Paquete ensueño', detalleDeEnsue, '3500', 'Paquete: Foto')">AÑADIR AL CARRITO</button>{% endif %}
                     </p>
                 </div>
             </div>
@@ -172,9 +202,15 @@
                                 <li>Tiempo de sesion: 1 hora 30 minutos</li>
                                 <li>$1800 dlls</li>
                             </ul>
-                            <button class="btn btn-primary" onclick="seleccionarPaquete('Video Cinematográfico', detalleDeCinem,'1800', 'Paquete: Video')">COMPRAR AHORA</button>
+                            {% if RolUsuario is none %}
+                        <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR</button>
+                        {% else %}
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Video Cinematográfico', detalleDeCinem,'1800', 'Paquete: Video')">COMPRAR AHORA</button>
+                        {% endif %}
                             <!-- Nuevo botón para añadir al carrito -->
-                            <button class="btn btn-success" onclick="agregarAlCarrito('Video Cinematográfico', detalleDeCinem, '1800', 'Paquete: Video')">AÑADIR AL CARRITO</button>
+                              {% if RolUsuario in ['editor', 'admin'] %}<button class="btn btn-secondary">Editar Paquete</button>{% endif %}
+                         {% if RolUsuario == 'admin' %}<button class="btn btn-danger">Eliminar Paquete</button>{% endif %}
+                            {% if RolUsuario != None %}<button class="btn btn-success" onclick="agregarAlCarrito('Video Cinematográfico', detalleDeCinem, '1800', 'Paquete: Video')">AÑADIR AL CARRITO</button>{% endif %}
                         </p>
                     </div>
                 </div>
@@ -198,9 +234,15 @@
                                 <li>Tiempo de sesion: 3 horas</li>
                                 <li>$3400 dlls</li>
                             </ul>
-                            <button class="btn btn-primary" onclick="seleccionarPaquete('Producción Estrella', detalleDeEstre, '3400', 'Paquete: Video')">COMPRAR AHORA</button>
+                            {% if RolUsuario is none %}
+                        <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR</button>
+                        {% else %}
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Producción Estrella', detalleDeEstre, '3400', 'Paquete: Video')">COMPRAR AHORA</button>
+                        {% endif %}
                             <!-- Nuevo botón para añadir al carrito -->
-                            <button class="btn btn-success" onclick="agregarAlCarrito('Producción Estrella', detalleDeEstre, '3400', 'Paquete: Video')">AÑADIR AL CARRITO</button>
+                              {% if RolUsuario in ['editor', 'admin'] %}<button class="btn btn-secondary">Editar Paquete</button>{% endif %}
+                         {% if RolUsuario == 'admin' %}<button class="btn btn-danger">Eliminar Paquete</button>{% endif %}
+                            {% if RolUsuario != None %}<button class="btn btn-success" onclick="agregarAlCarrito('Producción Estrella', detalleDeEstre, '3400', 'Paquete: Video')">AÑADIR AL CARRITO</button>{% endif %}
                         </p>
                     </div>
                 </div>
@@ -219,9 +261,15 @@
                                 <li>Tiempo de sesion: 4 horas</li>
                                 <li>$400 dlls</li>
                             </ul>
-                            <button class="btn btn-primary" onclick="seleccionarPaquete('Videos Conceptuales', detalleDeConce, '400', 'Paquete: Video')">COMPRAR AHORA</button>
+                            {% if RolUsuario is none %}
+                        <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR</button>
+                        {% else %}
+                        <button class="btn btn-primary" onclick="seleccionarPaquete('Videos Conceptuales', detalleDeConce, '400', 'Paquete: Video')">COMPRAR AHORA</button>
+                        {% endif %}
                             <!-- Nuevo botón para añadir al carrito -->
-                            <button class="btn btn-success" onclick="agregarAlCarrito('Videos Conceptuales', detalleDeConce, '400', 'Paquete: Video')">AÑADIR AL CARRITO</button>
+                              {% if RolUsuario in ['editor', 'admin'] %}<button class="btn btn-secondary">Editar Paquete</button>{% endif %}
+                         {% if RolUsuario == 'admin' %}<button class="btn btn-danger">Eliminar Paquete</button>{% endif %}
+                            {% if RolUsuario != None %}<button class="btn btn-success" onclick="agregarAlCarrito('Videos Conceptuales', detalleDeConce, '400', 'Paquete: Video')">AÑADIR AL CARRITO</button>{% endif %}
                         </p>
                     </div>
                 </div>

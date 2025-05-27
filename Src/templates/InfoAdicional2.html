@@ -100,11 +100,11 @@
         <form>
           <div class="mb-3">
             <label>Nombre</label>
-            <input type="text" id="ticketNombre" class="form-control">
+            <input type="text" id="ticketNombre" class="form-control" value="{{ nombre }}">
           </div>
           <div class="mb-3">
             <label>Apellido</label>
-            <input type="text" id="ticketApellido" class="form-control">
+            <input type="text" id="ticketApellido" class="form-control" value="{{ apellido }}">
           </div>
           <div class="mb-3">
             <label>Correo Electrónico</label>
@@ -130,6 +130,24 @@
       </div>
     </div>
   </div>
+
+  <script>
+    const fechasOcupadas = {{ fechas_ocupadas | tojson }};
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const inputFecha = document.getElementById("ticketFecha");
+
+        inputFecha.addEventListener("input", function () {
+            if (fechasOcupadas.includes(this.value)) {
+                alert("❌ Esta fecha ya está reservada. Elige otra.");
+                this.value = "";
+            }
+        });
+
+        inputFecha.setAttribute("min", new Date().toISOString().split("T")[0]);
+    });
+</script>
+
   <!-- Scripts -->
     <script src="{{ url_for('static', filename='JS/Adicionales2.js') }}"></script>
 </body>

@@ -10,6 +10,19 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card p-5 shadow" style="width: 100%; max-width: 600px;">
       <h2 class="mb-4 text-center">Registro</h2>
+
+      <!-- Alertas flash -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+          </div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+    
       <form method="POST">
         <div class="row">
           <div class="col-md-6 mb-3">

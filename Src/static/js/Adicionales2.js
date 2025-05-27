@@ -41,6 +41,7 @@ document.getElementById('videosAdicionales').addEventListener("input", actualiza
 document.addEventListener("DOMContentLoaded", actualizarTotal);
 
 // Confirmar paquete
+/*
 function confirmarPaquete() {
   localStorage.setItem('SNombre', document.getElementById("ticketNombre").value);
   localStorage.setItem('SApellido', document.getElementById("ticketApellido").value);
@@ -52,6 +53,54 @@ function confirmarPaquete() {
   localStorage.setItem('SExtraHoras', document.getElementById("extraHoras").value);
   localStorage.setItem('SFotosAdd', document.getElementById("fotosAdicionales").value);
   localStorage.setItem('SVideosAdd', document.getElementById("videosAdicionales").value);
+  alert('¡Paquete confirmado!');
+  window.location.href = 'Ticket2';
+
+         const fecha = document.getElementById("ticketFecha").value;
+
+    // Enviar fecha al servidor
+    fetch("/reservar_fecha", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ fecha: fecha })
+    })
+    .then(response => {
+        if (!response.ok) {
+            return response.json().then(data => { throw new Error(data.message); });
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data.message);
+        window.location.href = "ticket"; // o Ticket2
+    })
+    .catch(err => {
+        alert("Error: " + err.message);
+    });
+
+}*/
+// Confirmar paquete y guardar en `localStorage`
+function confirmarPaquete() {
+  let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+
+  // Guardar información del usuario
+  localStorage.setItem('SNombre', document.getElementById("ticketNombre").value);
+  localStorage.setItem('SApellido', document.getElementById("ticketApellido").value);
+  localStorage.setItem('SCorreo', document.getElementById("ticketCorreo").value);
+  localStorage.setItem('SFecha', document.getElementById("ticketFecha").value);
+  localStorage.setItem('SHoraEvento', document.getElementById("ticketHoraEvento").value);
+  localStorage.setItem('SDireccion', document.getElementById("ticketDireccion").value);
+  localStorage.setItem('SComentario', document.getElementById("ticketComentario").value);
+  localStorage.setItem('SExtraHoras', document.getElementById("extraHoras").value);
+  localStorage.setItem('SFotosAdd', document.getElementById("fotosAdicionales").value);
+  localStorage.setItem('SVideosAdd', document.getElementById("videosAdicionales").value);
+  localStorage.setItem('STotalCompra', document.getElementById("total").textContent);
+
+  // Guardar lista de paquetes en `localStorage`
+  localStorage.setItem('paquetesTicket', JSON.stringify(carrito));
+
   alert('¡Paquete confirmado!');
   window.location.href = 'Ticket2';
 }

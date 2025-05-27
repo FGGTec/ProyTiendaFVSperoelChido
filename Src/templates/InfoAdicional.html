@@ -77,15 +77,16 @@
                 <form>
                     <div class="mb-3">
                         <label>Nombre</label>
-                        <input id="ticketNombre" type="text" class="form-control">
+                        <input id="ticketNombre" type="text" class="form-control" value="{{ nombre }}">
                     </div>
                     <div class="mb-3">
                         <label>Apellido</label>
-                        <input id="ticketApellido" type="text" class="form-control">
+                        <input id="ticketApellido" type="text" class="form-control" value="{{ apellido }}">
                     </div>
                     <div class="mb-3">
-                        <label>Correo Electrónico</label>
-                        <input id="ticketCorreo" type="email" class="form-control">
+                    <label>Correo Electrónico</label>
+                    <input id="ticketCorreo" type="email" class="form-control">
+                    <div id="correoError" class="form-text text-danger" style="display: none;">Correo inválido</div>
                     </div>
                     <div class="row">
                         <div class="col-md-6 mb-3">
@@ -116,9 +117,7 @@
                 <p>Videos adicionales: <input type="number" id="videosAdicionales" value="0" min="0" class="w-25" onchange="actualizarTotal()"> <span class="float-end">$10.00 cada video</span></p>
                 <hr>
                 <h4>Total: <span id="total" class="float-end">$1000.00</span></h4>
-                <a href="{{ url_for('ticket') }}">
-                    <button class="btn btn-confirmar w-100" onclick="confirmarPaquete()">Confirmar</button>
-                </a>
+                <button class="btn btn-confirmar w-100" onclick="confirmarPaquete()">Confirmar</button>
 
                 <div class="contCalc">
                     <link id="estilosCalcu" rel="stylesheet" href="{{ url_for('static', filename='css/estiloCalc1.css') }}">
@@ -144,21 +143,54 @@
         </div>
     </div>
 
+    <script>
+
+         const input = document.getElementById('ticketCorreo');
+        const error = document.getElementById('correoError');
+
+        input.addEventListener('input', function () {
+            if (input.validity.valid) {
+            error.style.display = 'none';
+            } else {
+            error.style.display = 'block';
+            }
+        });
+        const fechasOcupadas = {{ fechas_ocupadas|tojson }};
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputFecha = document.getElementById("ticketFecha");
+            inputFecha.addEventListener("input", function () {
+                const seleccionada = this.value;
+                if (fechasOcupadas.includes(seleccionada)) {
+                    alert("Esta fecha ya está reservada. Por favor elige otra.");
+                    this.value = "";
+                }
+            });
+
+            inputFecha.setAttribute("min", new Date().toISOString().split("T")[0]); 
+
+            inputFecha.addEventListener("focus", function () {
+                this.classList.remove("is-invalid");
+            });
+        });
+    </script>
+
     <script src="{{ url_for('static', filename='JS/Adicionales.js') }}"></script>
     <script src="{{ url_for('static', filename='JS/Ticket.js') }}"></script>
 
     <script>
-        // Recuperar datos del localStorage
         const paqueteNombre = localStorage.getItem('paqueteNombre');
         const paqueteDetalles = localStorage.getItem('paqueteDetalles');
         const paquetePrecio = localStorage.getItem('paquetePrecio');
         const paqueteTipo = localStorage.getItem('paqueteTipo');
 
-        // Mostrar en la página usando los IDs correctos
         document.getElementById('paquete-nombre').textContent = paqueteNombre || 'No hay paquete seleccionado.';
         document.getElementById('paquete-detalles').textContent = paqueteDetalles || '';
         document.getElementById('paquete-precio').textContent = paquetePrecio || '';
         document.getElementById('paquete-tipo').textContent = paqueteTipo || '';
     </script>
+
+
+
 </body>
 </html>
