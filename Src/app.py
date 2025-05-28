@@ -6,7 +6,7 @@ from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user, login_required, current_user
 
 from flask import Flask, redirect, render_template, request, url_for, flash, abort
-from Config import DevelopmentConfig
+from config import DevelopmentConfig
 from models.entities.Users import User
 from models.ModelUsers import ModelUsers
 from models.entities.Users import User
@@ -66,13 +66,28 @@ def paquetes():
 @app.route("/paquetes")
 def paquetes():
     RolUsuario = None
+    paquetes = []
+
+    cursor = db.connection.cursor()
+
+    # Obtener el rol del usuario actual
     if current_user.is_authenticated:
-        cursor = db.connection.cursor()
         cursor.execute("SELECT RolUsuario FROM Usuario WHERE ID_Usuario = %s", (current_user.id,))
         result = cursor.fetchone()
         if result:
             RolUsuario = result[0]
-    return render_template("paquetes.html", RolUsuario=RolUsuario)
+
+    # Obtener todos los paquetes de la base de datos
+    cursor.execute("SELECT * FROM paquete")
+    paquetes_data = cursor.fetchall()
+    column_names = [desc[0] for desc in cursor.description]
+    cursor.close()
+
+    # Convertir las tuplas en diccionarios
+    paquetes = [dict(zip(column_names, row)) for row in paquetes_data]
+
+    return render_template("paquetes.html", RolUsuario=RolUsuario, paquetes=paquetes)
+
 
 @app.route("/InfoAdicional2")
 def InfoAdicional2():
