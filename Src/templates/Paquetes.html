@@ -57,12 +57,12 @@
             </div>
         </div>
     </nav>
-    {% for paquete in paquetes %}
-    <div class="card flex-fill" style="width: 48rem; margin: 24px;">
-<div class="col">
-    <div class="card card-foto">
-        <div class="card-body" style="background-color: rgb(239, 146, 0); border-radius: 4px;">
-        <div class="card-body" style="background-color: rgb(255, 179, 61); border-radius: 8px;">
+  <div class="container my-4">
+    <div class="row">
+        {% for paquete in paquetes %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4"> 
+           <div class="card h-100 shadow-lg" style="background-color: rgb(239, 146, 0); border-radius: 10px;">
+    <div class="card-body d-flex flex-column justify-content-between" style="background-color: rgb(255, 179, 61); border-radius: 8px; min-height: 420px;">
         <h2 style="padding: 5px;"> Tipo: {{ paquete.TipoPaquete }}</h2>
         <h5 class="card-title">{{ paquete.NombrePaquete }}</h5>
         <ul id="{{ paquete.ID_Paquete }}">
@@ -89,7 +89,10 @@
         {% endif %}
                 </div>
             </div>             
-        {% endfor %}          
+        {% endfor %}    
+          </div>
+</div>
+      
     <script src="{{ url_for('static', filename='js/PaqAdi.js') }}"> </script>  
 </body>
 </html>
