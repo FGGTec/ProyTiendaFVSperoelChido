@@ -111,7 +111,7 @@
 
             <div class="col-md-5 detalle-compra">
                 <h4>Detalle de Compra</h4>
-                <p><span id="paquete-tipo"></span><span class="float-end">$<i id="paquete-precio"></i> dlls</span></p>
+                <p>Paquete de <span id="paquete-tipo"></span><span class="float-end">$<i id="paquete-precio"></i> dlls</span></p>
                 <p>Tiempo extra: <input type="number" id="extraHoras" value="0" min="0" class="w-25" onchange="actualizarTotal()"> horas <span class="float-end">$10.00 cada hora</span></p>
                 <p>Fotos adicionales: <input type="number" id="fotosAdicionales" value="0" min="0" class="w-25" onchange="actualizarTotal()"> <span class="float-end">$10.00 cada foto</span></p>
                 <p>Videos adicionales: <input type="number" id="videosAdicionales" value="0" min="0" class="w-25" onchange="actualizarTotal()"> <span class="float-end">$10.00 cada video</span></p>
@@ -178,7 +178,7 @@
     <script src="{{ url_for('static', filename='JS/Adicionales.js') }}"></script>
     <script src="{{ url_for('static', filename='JS/Ticket.js') }}"></script>
 
-    <script>
+    <!-- <script>
         const paqueteNombre = localStorage.getItem('paqueteNombre');
         const paqueteDetalles = localStorage.getItem('paqueteDetalles');
         const paquetePrecio = localStorage.getItem('paquetePrecio');
@@ -188,9 +188,24 @@
         document.getElementById('paquete-detalles').textContent = paqueteDetalles || '';
         document.getElementById('paquete-precio').textContent = paquetePrecio || '';
         document.getElementById('paquete-tipo').textContent = paqueteTipo || '';
+    </script> -->
+    <script>
+        const paqueteNombre = localStorage.getItem('paqueteNombre');
+        let paqueteDetalles = localStorage.getItem('paqueteDetalles');
+        const paquetePrecio = localStorage.getItem('paquetePrecio');
+        const paqueteTipo = localStorage.getItem('paqueteTipo');
+    
+        // Si hay saltos de línea, conviértelos a <br>
+        if (paqueteDetalles) {
+            paqueteDetalles = paqueteDetalles.replace(/\\n/g, "<br>").replace(/\n/g, "<br>");
+            document.getElementById('paquete-detalles').innerHTML = paqueteDetalles;
+        } else {
+            document.getElementById('paquete-detalles').textContent = '';
+        }
+        document.getElementById('paquete-nombre').textContent = paqueteNombre || 'No hay paquete seleccionado.';
+        document.getElementById('paquete-precio').textContent = paquetePrecio || '';
+        document.getElementById('paquete-tipo').textContent = paqueteTipo || '';
     </script>
-
-
 
 </body>
 </html>

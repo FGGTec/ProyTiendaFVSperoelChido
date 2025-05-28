@@ -16,6 +16,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
     document.querySelector(".total span:last-child").textContent = "$" + (localStorage.getItem('STotalCompra') || "0");
 });
+// Borra los datos relacionados después de mostrar el ticket
+window.addEventListener('DOMContentLoaded', function() {
+    // Lista de claves a borrar
+    const claves = [
+        'paqueteNombre', 'paqueteDetalles', 'paquetePrecio', 'paqueteTipo',
+        'SNombre', 'SApellido', 'SCorreo', 'SFecha', 'SHoraEvento', 'SDireccion',
+        'SComentario', 'SExtraHoras', 'SFotosAdd', 'SVideosAdd', 'STotalCompra'
+    ];
+    claves.forEach(clave => localStorage.removeItem(clave));
+});
 /*
 document.addEventListener("DOMContentLoaded", function () {
     let paquetes = JSON.parse(localStorage.getItem('paquetesTicket')) || [];
