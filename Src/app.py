@@ -183,11 +183,38 @@ def guardar_ticket():
         db.connection.rollback()
         print("Error al guardar ticket:", e)
         return {"status": "error", "message": str(e)}, 500
+    
+@app.route("/ticket2")
+def ticket2():
+    return render_template("ticket2.html")
+    
+@app.route("/guardar_ticket2", methods=["POST"])
+@login_required
+def guardar_ticket2():
+    data = request.get_json()
+    try:
+        correo = data.get('correo')
+        fecha = data.get('fecha')
+        hora = data.get('hora')
+        direccion = data.get('direccion')
+        comentario = data.get('comentario')
+        total = data.get('total')
+        # El usuario actual
+        id_usuario = current_user.id
+        # El paquete seleccionado (debes guardar el ID del paquete en localStorage y mandarlo desde JS)
+        namepaquetes = data.get('id_paquete')
 
-@app.route("/Ticket2")
-def Ticket2():
-    return render_template("Ticket2.html")
-
+        cursor = db.connection.cursor()
+        cursor.execute("""
+            INSERT INTO ticketm (CorreoTicketM, FechaTicketM, HoraTicketM, DireccionTicketM, ComentarioTicketM, FKID_Usuario, NPaquetes, TotalTicketM)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        """, (correo, fecha, hora, direccion, comentario, id_usuario, namepaquetes, total))
+        db.connection.commit()
+        return {"status": "ok"}
+    except Exception as e:
+        db.connection.rollback()
+        print("Error al guardar ticket:", e)
+        return {"status": "error", "message": str(e)}, 500
 
 @app.route("/login", methods=["GET", "POST"])
 def login():

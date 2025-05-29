@@ -59,96 +59,99 @@
             </div>
         </div>
     </nav>
-  <div class="container mt-5">
-    <h2 class="text-center mb-4">Paquete Seleccionado</h2>
-    <div class="row justify-content-center" id="lista-paquetes">
-      <!-- Aquí se llenan los paquetes seleccionados -->
-    </div>
 
-    <div class="row mt-4">
-      <!-- Detalle compra -->
-      <div class="col-md-4 offset-md-1">
-        <div class="detalle-compra">
-          <h4>Detalle de Compra</h4>
-          <p>Paquete: <span id="paquete-tipo"></span></p>
-          <p>$<span id="paquete-precio"></span> dlls</p>
-
-          <div class="mb-2">
-            Tiempo extra: <input type="number" id="extraHoras" value="0"> horas
-            <span>$10.00 cada hora</span>
-          </div>
-          <div class="mb-2">
-            Fotos adicionales: <input type="number" id="fotosAdicionales" value="0">
-            <span>$10.00 cada foto</span>
-          </div>
-          <div class="mb-2">
-            Videos adicionales: <input type="number" id="videosAdicionales" value="0">
-            <span>$10.00 cada video</span>
-          </div>
-
-          <div class="total-text">
-            Total: <span id="total">$0.00 dlls</span>
-          </div>
-
-          <button class="btn btn-light mt-3" onclick="confirmarPaquete()">Confirmar</button>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Paquetes Seleccionados</h2>
+        <div class="row justify-content-center" id="lista-paquetes">
+            <h3 id="lista-paquetes"></h3>
+            
         </div>
-      </div>
-
-      <!-- Formulario -->
-      <div class="col-md-6">
-        <h4>Información del Cliente</h4>
-        <form>
-          <div class="mb-3">
-            <label>Nombre</label>
-            <input type="text" id="ticketNombre" class="form-control" value="{{ nombre }}">
-          </div>
-          <div class="mb-3">
-            <label>Apellido</label>
-            <input type="text" id="ticketApellido" class="form-control" value="{{ apellido }}">
-          </div>
-          <div class="mb-3">
-            <label>Correo Electrónico</label>
-            <input type="email" id="ticketCorreo" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label>Fecha del Evento</label>
-            <input type="date" id="ticketFecha" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label>Hora del Evento</label>
-            <input type="time" id="ticketHoraEvento" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label>Dirección del Evento</label>
-            <input type="text" id="ticketDireccion" class="form-control">
-          </div>
-          <div class="mb-3">
-            <label>Comentarios Adicionales</label>
-            <textarea id="ticketComentario" class="form-control"></textarea>
-          </div>
-        </form>
-      </div>
     </div>
-  </div>
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-7">
+                <h3>Información del Cliente</h3>
+                <form>
+                    <div class="mb-3">
+                        <label>Nombre</label>
+                        <input id="ticketNombre" type="text" class="form-control" value="{{ nombre }}">
+                    </div>
+                    <div class="mb-3">
+                        <label>Apellido</label>
+                        <input id="ticketApellido" type="text" class="form-control" value="{{ apellido }}">
+                    </div>
+                    <div class="mb-3">
+                    <label>Correo Electrónico</label>
+                    <input id="ticketCorreo" type="email" class="form-control">
+                    <div id="correoError" class="form-text text-danger" style="display: none;">Correo inválido</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label>Fecha del Evento</label>
+                            <input id="ticketFecha" type="date" class="form-control">
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label>Hora del Evento</label>
+                            <input id="ticketHoraEvento" type="time" class="form-control">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label>Dirección del Evento</label>
+                        <input id="ticketDireccion" type="text" class="form-control">
+                    </div>
+                    <div class="mb-3">
+                        <label>Comentarios Adicionales</label>
+                        <textarea id="ticketComentario" class="form-control"></textarea>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-md-5 detalle-compra">
+                <h4>Detalle de Compra</h4>
+                <p>Paquete de <span id="paquete-tipo"></span><span class="float-end">$<i id="paquete-precio"></i> dlls</span></p>
+                <p>Tiempo extra: <input type="number" id="extraHoras" value="0" min="0" class="w-25" onchange="actualizarTotal()"> horas <span class="float-end">$10.00 cada hora</span></p>
+                <p>Fotos adicionales: <input type="number" id="fotosAdicionales" value="0" min="0" class="w-25" onchange="actualizarTotal()"> <span class="float-end">$10.00 cada foto</span></p>
+                <p>Videos adicionales: <input type="number" id="videosAdicionales" value="0" min="0" class="w-25" onchange="actualizarTotal()"> <span class="float-end">$10.00 cada video</span></p>
+                <hr>
+                <h4>Total: <span id="total" class="float-end">$1000.00</span></h4>
+                <button class="btn btn-confirmar w-100" onclick="confirmarPaquete()">Confirmar</button>
+    </div>
 
   <script>
-    const fechasOcupadas = {{ fechas_ocupadas | tojson }};
+    const input = document.getElementById('ticketCorreo');
+        const error = document.getElementById('correoError');
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const inputFecha = document.getElementById("ticketFecha");
-
-        inputFecha.addEventListener("input", function () {
-            if (fechasOcupadas.includes(this.value)) {
-                alert("❌ Esta fecha ya está reservada. Elige otra.");
-                this.value = "";
+        input.addEventListener('input', function () {
+            if (input.validity.valid) {
+            error.style.display = 'none';
+            } else {
+            error.style.display = 'block';
             }
         });
+        const fechasOcupadas = {{ fechas_ocupadas|tojson }};
 
-        inputFecha.setAttribute("min", new Date().toISOString().split("T")[0]);
-    });
+        document.addEventListener("DOMContentLoaded", function () {
+            const inputFecha = document.getElementById("ticketFecha");
+            inputFecha.addEventListener("input", function () {
+                const seleccionada = this.value;
+                if (fechasOcupadas.includes(seleccionada)) {
+                    alert("Esta fecha ya está reservada. Por favor elige otra.");
+                    this.value = "";
+                }
+            });
+
+            inputFecha.setAttribute("min", new Date().toISOString().split("T")[0]); 
+
+            inputFecha.addEventListener("focus", function () {
+                this.classList.remove("is-invalid");
+            });
+        });
+        
+
 </script>
 
-  <!-- Scripts -->
     <script src="{{ url_for('static', filename='JS/Adicionales2.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/Ticket2.js') }}"></script>
 </body>
 </html>
