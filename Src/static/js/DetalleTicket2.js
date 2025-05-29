@@ -1,60 +1,72 @@
-/*
 document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById('ticketNombrePaquete').textContent = localStorage.getItem('paqueteNombre') || "Paquete no definido";
-    document.getElementById('ticketDetallePaquete').textContent = localStorage.getItem('paqueteDetalles') || "Detalles no disponibles";
-    document.getElementById('ticketNombre').textContent = localStorage.getItem('SNombre') || "Sin nombre";
-    document.getElementById('ticketApellido').textContent = localStorage.getItem('SApellido') || "Sin apellido";
-    document.getElementById('ticketCorreo').textContent = localStorage.getItem('SCorreo') || "Sin correo";
-    document.getElementById('ticketFecha').textContent = localStorage.getItem('SFecha') || "Sin fecha";
-    document.getElementById('ticketHoraEvento').textContent = localStorage.getItem('SHoraEvento') || "Sin hora";
-    document.getElementById('ticketDireccion').textContent = localStorage.getItem('SDireccion') || "Sin dirección";
-    document.getElementById('ticketComentario').textContent = localStorage.getItem('SComentario') || "Sin comentarios";
+    console.log("🔄 DOMContentLoaded ejecutado");
 
-    document.getElementById('extraHoras').textContent = localStorage.getItem('SExtraHoras') || 0;
-    document.getElementById('fotosAdicionales').textContent = localStorage.getItem('SFotosAdd') || 0;
-    document.getElementById('videosAdicionales').textContent = localStorage.getItem('SVideosAdd') || 0;
+    // Leer localStorage
+    let paquetesRaw = localStorage.getItem('paquetesTicket');
+    console.log("📦 paquetesTicket (raw):", paquetesRaw);
 
-    document.querySelector(".total span:last-child").textContent = "$" + (localStorage.getItem('STotalCompra') || "0");
-});
-*/
-document.addEventListener("DOMContentLoaded", function () {
-    let paquetes = JSON.parse(localStorage.getItem('paquetesTicket')) || [];
+    let paquetes = [];
+    try {
+        paquetes = JSON.parse(paquetesRaw) || [];
+    } catch (err) {
+        console.error("❌ Error al parsear paquetesTicket:", err);
+    }
+
     let paqueteIndividual = localStorage.getItem('paqueteNombre');
     let detallesIndividuales = localStorage.getItem('paqueteDetalles');
 
+    console.log("📦 paquetes parsed:", paquetes);
+    console.log("🎁 paqueteIndividual:", paqueteIndividual);
+    console.log("📝 detallesIndividuales:", detallesIndividuales);
+
+    // Mostrar paquetes
     if (paquetes.length > 0) {
-        // Si hay múltiples paquetes, mostramos todos en Ticket2
+        const nombres = paquetes.map(p => p.nombre).join(", ");
+        console.log("✅ Mostrando nombres de paquetes:", nombres);
+        document.getElementById('ticketNombrePaquete').textContent = nombres;
+
         let detallesHTML = "";
         paquetes.forEach(paquete => {
-            detallesHTML += `<p><strong>${paquete.nombre}</strong>: ${paquete.detalles}</p>`;
+            detallesHTML += `<p><strong>${paquete.nombre}</strong>: ${paquete.detalles || "Sin detalles disponibles"}</p>`;
         });
         document.getElementById("ticketDetallePaquete").innerHTML = detallesHTML;
+
     } else if (paqueteIndividual) {
-        // Si es una compra individual, mostramos solo un paquete
+        console.log("🟡 Mostrando paquete individual");
         document.getElementById('ticketNombrePaquete').textContent = paqueteIndividual || "Paquete no definido";
         document.getElementById('ticketDetallePaquete').textContent = detallesIndividuales || "Detalles no disponibles";
+
     } else {
+        console.warn("⚠️ No hay paquetes seleccionados");
+        document.getElementById("ticketNombrePaquete").textContent = "Sin paquetes";
         document.getElementById("ticketDetallePaquete").textContent = "No hay paquetes seleccionados.";
     }
 
-    // Mostrar información del usuario
-    document.getElementById('ticketNombre').textContent = localStorage.getItem('SNombre') || "Sin nombre";
-    document.getElementById('ticketApellido').textContent = localStorage.getItem('SApellido') || "Sin apellido";
-    document.getElementById('ticketCorreo').textContent = localStorage.getItem('SCorreo') || "Sin correo";
-    document.getElementById('ticketFecha').textContent = localStorage.getItem('SFecha') || "Sin fecha";
-    document.getElementById('ticketHoraEvento').textContent = localStorage.getItem('SHoraEvento') || "Sin hora";
-    document.getElementById('ticketDireccion').textContent = localStorage.getItem('SDireccion') || "Sin dirección";
-    document.getElementById('ticketComentario').textContent = localStorage.getItem('SComentario') || "Sin comentarios";
+    // Mostrar información del cliente
+    const campos = ['SNombre', 'SApellido', 'SCorreo', 'SFecha', 'SHoraEvento', 'SDireccion', 'SComentario'];
+    const camposExtras = ['SExtraHoras', 'SFotosAdd', 'SVideosAdd'];
 
-    // Mostrar extras
-    document.getElementById('extraHoras').textContent = localStorage.getItem('SExtraHoras') || "0";
-    document.getElementById('fotosAdicionales').textContent = localStorage.getItem('SFotosAdd') || "0";
-    document.getElementById('videosAdicionales').textContent = localStorage.getItem('SVideosAdd') || "0";
+    campos.forEach(campo => {
+        const valor = localStorage.getItem(campo);
+        console.log(`🧾 ${campo}:`, valor);
+        const id = campo.replace('S', 'ticket');
+        const elemento = document.getElementById(id);
+        if (elemento) elemento.textContent = valor || `Sin ${id.toLowerCase()}`;
+    });
 
-    // Mostrar total correctamente
-    document.querySelector(".total span:last-child").textContent = "$" + (localStorage.getItem('STotalCompra') || "0");
+    camposExtras.forEach(campo => {
+        const valor = localStorage.getItem(campo);
+        console.log(`➕ Extra ${campo}:`, valor);
+        const id = campo.replace('S', '');
+        const elemento = document.getElementById(id);
+        if (elemento) elemento.textContent = valor || "0";
+    });
 
-    // ⚠️ Vaciar el carrito después de llegar a Ticket2.html
+    const total = localStorage.getItem('STotalCompra') || "0";
+    console.log("💰 STotalCompra:", total);
+    document.querySelector(".total span:last-child").textContent = "$" + total;
+
+    // Opcional: limpiar el carrito
     localStorage.removeItem('carrito');
-    localStorage.removeItem('paquetesTicket');    
+    localStorage.removeItem('paquetesTicket');
 });

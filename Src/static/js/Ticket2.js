@@ -1,4 +1,5 @@
 function confirmarPaquete() {
+    const carrito = JSON.parse(localStorage.getItem('carrito')) || [];
     const nombre = document.getElementById('ticketNombre').value.trim();
     const apellido = document.getElementById('ticketApellido').value.trim();
     const correo = document.getElementById('ticketCorreo').value.trim();
@@ -43,6 +44,7 @@ function confirmarPaquete() {
     localStorage.setItem('SExtraHoras', document.getElementById("extraHoras").value);
     localStorage.setItem('SFotosAdd', document.getElementById("fotosAdicionales").value);
     localStorage.setItem('SVideosAdd', document.getElementById("videosAdicionales").value);
+    localStorage.setItem('paquetesTicket', JSON.stringify(carrito));
 
     // Enviar la fecha al backend
     fetch("/reservar_fecha", {
@@ -76,7 +78,7 @@ function enviarTicketASQL() {
         direccion: localStorage.getItem('SDireccion'),
         comentario: localStorage.getItem('SComentario'),
         total: localStorage.getItem('STotalCompra'),
-        namepaquetes: localStorage.getItem('paqueteNombre'),
+        namepaquetes: localStorage.getItem('paquetesTicket'),
     };
 
     fetch('/guardar_ticket2', {

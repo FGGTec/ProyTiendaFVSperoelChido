@@ -202,7 +202,8 @@ def guardar_ticket2():
         # El usuario actual
         id_usuario = current_user.id
         # El paquete seleccionado (debes guardar el ID del paquete en localStorage y mandarlo desde JS)
-        namepaquetes = data.get('id_paquete')
+        namepaquetes = data.get('namepaquetes')  # ✅
+
 
         cursor = db.connection.cursor()
         cursor.execute("""
