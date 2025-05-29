@@ -10,6 +10,7 @@ from config import DevelopmentConfig
 from models.entities.Users import User
 from models.ModelUsers import ModelUsers
 from models.entities.Users import User
+from dotenv import load_dotenv
 
 def create_app():
     # Asegúrate de tener tu config.py
