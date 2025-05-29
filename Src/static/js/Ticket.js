@@ -86,7 +86,7 @@ function confirmarPaquete() {
         headers: {
             "Content-Type": "application/json"
         },
-        body: JSON.stringify({ fecha: fecha })
+        body: JSON.stringify({ fecha: localStorage.getItem('SFecha') })
     })
     .then(response => {
         if (!response.ok) {
@@ -95,16 +95,46 @@ function confirmarPaquete() {
         return response.json();
     })
     .then(data => {
-        alert(" Registro confirmado. Redirigiendo...");
-        setTimeout(() => {
-            window.location.href = "/ticket"; // usa URL absoluta para seguridad
-        }, 1200);
+        // Llama a enviarTicketASQL antes de redirigir
+        enviarTicketASQL();
+        // Ya no es necesario el alert y setTimeout aquí, porque están en enviarTicketASQL
     })
     .catch(err => {
         alert(" Error: " + err.message);
     });
 }
+// Nueva función para enviar el ticket a la base de datos
+function enviarTicketASQL() {
+    const data = {
+        correo: localStorage.getItem('SCorreo'),
+        fecha: localStorage.getItem('SFecha'),
+        hora: localStorage.getItem('SHoraEvento'),
+        direccion: localStorage.getItem('SDireccion'),
+        comentario: localStorage.getItem('SComentario'),
+        total: localStorage.getItem('STotalCompra'),
+        id_paquete: localStorage.getItem('paqueteID')
+    };
 
+    fetch('/guardar_ticket', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+        if (res.status === "ok") {
+            alert("Registro confirmado y ticket guardado. Redirigiendo...");
+            setTimeout(() => {
+                window.location.href = "/ticket";
+            }, 1200);
+        } else {
+            alert("Error al guardar ticket: " + res.message);
+        }
+    })
+    .catch(err => {
+        alert("Error al guardar ticket: " + err.message);
+    });
+}
 // Función para validar correos
 function validateEmail(email) {
     return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);

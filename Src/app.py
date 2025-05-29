@@ -156,6 +156,34 @@ def reservar_fecha():
 def ticket():
     return render_template("ticket.html")
 
+@app.route("/guardar_ticket", methods=["POST"])
+@login_required
+def guardar_ticket():
+    data = request.get_json()
+    try:
+        correo = data.get('correo')
+        fecha = data.get('fecha')
+        hora = data.get('hora')
+        direccion = data.get('direccion')
+        comentario = data.get('comentario')
+        total = data.get('total')
+        # El usuario actual
+        id_usuario = current_user.id
+        # El paquete seleccionado (debes guardar el ID del paquete en localStorage y mandarlo desde JS)
+        id_paquete = data.get('id_paquete')
+
+        cursor = db.connection.cursor()
+        cursor.execute("""
+            INSERT INTO ticket (CorreoTicket, FechaTicket, HoraTicket, DireccionTicket, ComentarioTicket, FKID_Usuario, FKID_Paquete, TotalTicket)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
+        """, (correo, fecha, hora, direccion, comentario, id_usuario, id_paquete, total))
+        db.connection.commit()
+        return {"status": "ok"}
+    except Exception as e:
+        db.connection.rollback()
+        print("Error al guardar ticket:", e)
+        return {"status": "error", "message": str(e)}, 500
+
 @app.route("/Ticket2")
 def Ticket2():
     return render_template("Ticket2.html")

@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
 window.addEventListener('DOMContentLoaded', function() {
     // Lista de claves a borrar
     const claves = [
-        'paqueteNombre', 'paqueteDetalles', 'paquetePrecio', 'paqueteTipo',
+        'paqueteNombre', 'paqueteDetalles', 'paquetePrecio', 'paqueteTipo', 'paqueteID', // <-- agregado paqueteID
         'SNombre', 'SApellido', 'SCorreo', 'SFecha', 'SHoraEvento', 'SDireccion',
         'SComentario', 'SExtraHoras', 'SFotosAdd', 'SVideosAdd', 'STotalCompra'
     ];

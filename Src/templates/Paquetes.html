@@ -72,7 +72,7 @@
         {% if RolUsuario is none %}
             <button class="btn btn-primary" onclick="window.location.href='/login'">COMPRAR AHORA</button>
         {% else %}
-            <button class="btn btn-primary" onclick="seleccionarPaquete('{{ paquete.NombrePaquete }}', '{{ paquete.DetallesPaquete }}', '{{ paquete.PrecioPaquete }}', '{{ paquete.TipoPaquete }}')">COMPRAR AHORA</button>
+            <button class="btn btn-primary" onclick="seleccionarPaquete('{{ paquete.NombrePaquete }}', '{{ paquete.DetallesPaquete }}', '{{ paquete.PrecioPaquete }}', '{{ paquete.TipoPaquete }}', '{{ paquete.ID_Paquete }}')">COMPRAR AHORA</button>
         {% endif %}
 
         {% if RolUsuario in ['editor', 'admin'] %}
@@ -83,16 +83,13 @@
         {% endif %}
         {% if RolUsuario %}
             <button class="btn btn-success" onclick="agregarAlCarrito('{{ paquete.NombrePaquete }}', '{{ paquete.DetallesPaquete }}', '{{ paquete.PrecioPaquete }}', '{{ paquete.TipoPaquete }}')">AÑADIR AL CARRITO</button>
-                    </div>
-                </div>
-            </div>
         {% endif %}
                 </div>
             </div>             
-        {% endfor %}    
           </div>
-</div>
-      
+        {% endfor %}  
+     </div>
+    </div>
     <script src="{{ url_for('static', filename='js/PaqAdi.js') }}"> </script>  
 </body>
 </html>
