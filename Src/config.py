@@ -11,5 +11,5 @@ class DevelopmentConfig:
     SECRET_KEY = "qhrf$edjYTJ)*21nsThdK"
     MYSQL_HOST = "localhost"
     MYSQL_USER = "root"
-    MYSQL_PASSWORD = "0000"
+    MYSQL_PASSWORD = "12345678"
     MYSQL_DB = "fvstore"

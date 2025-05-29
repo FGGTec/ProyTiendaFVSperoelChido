@@ -78,7 +78,9 @@ function enviarTicketASQL() {
         direccion: localStorage.getItem('SDireccion'),
         comentario: localStorage.getItem('SComentario'),
         total: localStorage.getItem('STotalCompra'),
-        namepaquetes: localStorage.getItem('paquetesTicket'),
+        namepaquetes: JSON.parse(localStorage.getItem('paquetesTicket') || '[]')
+        .map( p =>p.nombre)
+        .join(", "),
     };
 
     fetch('/guardar_ticket2', {
